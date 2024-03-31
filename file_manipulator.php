@@ -35,3 +35,5 @@ if($acition === "copy") {
     $result = file_put_contents($outputname,$inputcontents);
     if($result === false) {}
 }
+
+
