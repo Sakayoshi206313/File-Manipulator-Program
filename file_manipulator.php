@@ -9,9 +9,8 @@
 
 // fclose($inputfile);
 
-if($argc !=4) { //バリデータ
+if($argc != 4) { //バリデータ
     echo "使用法: php file=Manipulator.php reverse <input_file> <output_file>\n";
-    exit(1);
 }
 
 $acition = $argv[1];
@@ -37,3 +36,17 @@ if($acition === "copy") {
 }
 
 
+if($acition === 'duplicate-contents') {
+    $inputcontents = file_get_contents($inputname);
+    if($inputcontents === false) {}
+
+    $duplicate = str_repeat($inputcontents,2);
+
+    $duplicatecontents = fopen($inputname,"w");
+    if($duplicatecontents === false) {}
+
+    $result = fwrite($duplicatecontents,$duplicate);
+    if($result === false){}
+
+    fclose($duplicatecontents);
+}
