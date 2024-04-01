@@ -10,7 +10,8 @@
 // fclose($inputfile);
 
 if($argc != 4) { //バリデータ
-    echo "使用法: php file=Manipulator.php reverse <input_file> <output_file>\n";
+    echo "使用法 : php file=Manipulator.php reverse <input_file> <output_file>\n";
+    exit(1); //スクリプトを終了させる関数　これがないと意図しない結果でも出力される可能性がある
 }
 
 $acition = $argv[1];
@@ -49,4 +50,22 @@ if($acition === 'duplicate-contents') {
     if($result === false){}
 
     fclose($duplicatecontents);
+}
+
+if($acition === 'replace-string') {
+    $string = 'needle';
+    $replace = 'newstring';
+
+    $inputcontents = file_get_contents($inputname);
+    if($inputcontents === false){}
+
+    $replace = str_replace($string,$replace,$inputcontents);
+
+    $replacestring = fopen($inputname,"w");
+    if($replacestring === false) {}
+
+    $result = fwrite($replacestring,$replace);
+    if($result === false){}
+
+    fclose($replacestring);
 }

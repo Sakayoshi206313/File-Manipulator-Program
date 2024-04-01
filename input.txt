@@ -1,1 +1,4 @@
-Hello PHP!  
+Hello PHP! 
+newstring
+Hello PHP!
+newstring
